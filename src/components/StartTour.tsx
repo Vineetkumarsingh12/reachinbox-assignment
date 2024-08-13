@@ -1,4 +1,4 @@
-import { driver, DriveStep } from "driver.js";
+import { driver, DriveStep, Config, AllowedButtons } from "driver.js";
 import "driver.js/dist/driver.css";
 
 // Define the step structure for TypeScript
@@ -13,13 +13,13 @@ interface TourStep extends DriveStep {
 }
 
 // Define the driver options with steps
-const driverOptions: any = {
+const driverOptions: Config = {
   animate: true,
-  opacity: 0.75,
-  padding: 10,
+  // opacity: 0.75,
+  // padding: 10,
   allowClose: true,
   showProgress: false,
-  showButtons: ['next', 'previous', 'close'],
+  showButtons: ['next', 'previous', 'close'] as AllowedButtons[], // Explicitly cast as AllowedButtons[]
   steps: [
     {
       element: '.tour-home',
