@@ -5,6 +5,7 @@ import MainPage from "../components/MainPage";
 import SideBar from "../components/SideBar";
 import TopBar from "../components/TopBar";
 import { useLocation, useNavigate } from "react-router-dom";
+import {driverObj} from '../components/StartTour';
 
 function OneBox() {
   const Navigate = useNavigate();
@@ -18,6 +19,7 @@ function OneBox() {
     }
     if (token) {
       localStorage.setItem("token", `Bearer ${token}`);
+      driverObj.drive();
     }
   }, [token]);
 

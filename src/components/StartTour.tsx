@@ -1,7 +1,7 @@
 import { driver, DriveStep, Config, AllowedButtons } from "driver.js";
 import "driver.js/dist/driver.css";
 
-// Define the step structure for TypeScript
+
 interface TourStep extends DriveStep {
   element: string;
   popover: {
@@ -12,14 +12,13 @@ interface TourStep extends DriveStep {
   };
 }
 
-// Define the driver options with steps
+
 const driverOptions: Config = {
   animate: true,
-  // opacity: 0.75,
-  // padding: 10,
+
   allowClose: true,
   showProgress: false,
-  showButtons: ['next', 'previous', 'close'] as AllowedButtons[], // Explicitly cast as AllowedButtons[]
+  showButtons: ['next', 'previous', 'close'] as AllowedButtons[],  
   steps: [
     {
       element: '.tour-home',
@@ -93,8 +92,8 @@ const driverOptions: Config = {
         align: 'start'
       }
     }
-  ] as TourStep[] // Explicitly cast as TourStep[]
+  ] as TourStep[] 
 };
 
-// Create the driver instance with the defined options
+
 export const driverObj = driver(driverOptions);
