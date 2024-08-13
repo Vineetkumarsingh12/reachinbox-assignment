@@ -1,15 +1,26 @@
-import { driver } from "driver.js";
+import { driver, DriveStep } from "driver.js";
 import "driver.js/dist/driver.css";
 
- export const driverObj = driver({
-  animate: true, 
-  opacity: 0.75, 
-  padding: 10, 
-  allowClose: true, 
+// Define the step structure for TypeScript
+interface TourStep extends DriveStep {
+  element: string;
+  popover: {
+    title: string;
+    description: string;
+    side: 'top' | 'bottom' | 'left' | 'right';
+    align: 'start' | 'center' | 'end';
+  };
+}
+
+// Define the driver options with steps
+const driverOptions: any = {
+  animate: true,
+  opacity: 0.75,
+  padding: 10,
+  allowClose: true,
   showProgress: false,
   showButtons: ['next', 'previous', 'close'],
   steps: [
-
     {
       element: '.tour-home',
       popover: {
@@ -82,6 +93,8 @@ import "driver.js/dist/driver.css";
         align: 'start'
       }
     }
-  ]
-});
+  ] as TourStep[] // Explicitly cast as TourStep[]
+};
 
+// Create the driver instance with the defined options
+export const driverObj = driver(driverOptions);
