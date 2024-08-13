@@ -18,8 +18,12 @@ function OneBox() {
       Navigate("/login");
     }
     if (token) {
+      const temp=localStorage.getItem("token");
+      if(!temp){
+        driverObj.drive();
+      }
       localStorage.setItem("token", `Bearer ${token}`);
-      driverObj.drive();
+      
     }
   }, [token]);
 
